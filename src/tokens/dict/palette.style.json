@@ -1,34 +1,40 @@
 {
   "palette": {
-    "galacticBlue": {
-      "value": "#755CDE"
+    "black": {
+      "value": "#000112"
     },
-    "summerYellow": {
-      "value": "#F6A560"
+    "veryDarkGrey": {
+      "value": "#20212C"
     },
-    "pink": {
-      "value": "#F39E9E"
+    "darkGrey": {
+      "value": "#2B2C37"
     },
-    "lightRed": {
-      "value": "#EB7565"
+    "linesDark": {
+      "value": "#3E3F4E"
     },
-    "cyan": {
-      "value": "#61C4B7"
+    "mediumGrey": {
+      "value": "#828FA3"
     },
-    "darkPurple": {
-      "value": "#552049"
+    "linesLight": {
+      "value": "#E4EBFA"
     },
-    "mediumBrown": {
-      "value": "#7A746E"
-    },
-    "lightCream": {
-      "value": "#FFF7F0"
+    "lightGrey": {
+      "value": "#F4F7FD"
     },
     "white": {
-      "value": "#fff"
+      "value": "#FFFFFF"
     },
-    "black": {
-      "value": "#030303"
+    "mainPurple": {
+      "value": "#635FC7"
+    },
+    "mainPurpleHover": {
+      "value": "#A8A4FF"
+    },
+    "red": {
+      "value": "#EA5555"
+    },
+    "redHover": {
+      "value": "#FF9898"
     }
   }
 }

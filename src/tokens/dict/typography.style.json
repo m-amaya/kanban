@@ -5,31 +5,43 @@
     }
   },
   "fontSizes": {
-    "default": {
-      "value": 16
+    "headXl": {
+      "value": 24
     },
-    "h1": {
-      "value": 56
+    "headLg": {
+      "value": 18
     },
-    "h2": {
-      "value": 40
+    "headMd": {
+      "value": 15
     },
-    "h3": {
-      "value": 32
+    "headSm": {
+      "value": 12
+    },
+    "bodyLg": {
+      "value": 13
+    },
+    "bodyMd": {
+      "value": 12
     }
   },
   "lineHeights": {
-    "default": {
-      "value": 28
+    "headXl": {
+      "value": 30
     },
-    "h1": {
-      "value": 70
+    "headLg": {
+      "value": 23
     },
-    "h2": {
-      "value": 51
+    "headMd": {
+      "value": 19
     },
-    "h3": {
-      "value": 40
+    "headSm": {
+      "value": 15
+    },
+    "bodyLg": {
+      "value": 23
+    },
+    "bodyMd": {
+      "value": 15
     }
   },
   "fontWeights": {

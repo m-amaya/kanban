@@ -1,6 +1,12 @@
 {
   "name": "kanban",
   "version": "0.1.0",
+  "description": "Frontend Mentor Challenge: Design Portfolio",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/m-amaya/kanban.git"
+  },
+  "homepage": "https://m-amaya.github.io/kanban/",
   "private": true,
   "browserslist": {
     "production": [
@@ -14,9 +20,10 @@
       "last 1 safari version"
     ]
   },
-   "scripts": {
+  "scripts": {
     "dev": "craco start",
-    "build": "craco build",
+    "build": "yarn build:tokens && craco build",
+    "build:tokens": "style-dictionary build --config ./sd.config.json",
     "test": "craco test",
     "eject": "react-scripts eject",
     "predeploy": "yarn build",
