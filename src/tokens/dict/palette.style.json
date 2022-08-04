@@ -1,0 +1,34 @@
+{
+  "palette": {
+    "galacticBlue": {
+      "value": "#755CDE"
+    },
+    "summerYellow": {
+      "value": "#F6A560"
+    },
+    "pink": {
+      "value": "#F39E9E"
+    },
+    "lightRed": {
+      "value": "#EB7565"
+    },
+    "cyan": {
+      "value": "#61C4B7"
+    },
+    "darkPurple": {
+      "value": "#552049"
+    },
+    "mediumBrown": {
+      "value": "#7A746E"
+    },
+    "lightCream": {
+      "value": "#FFF7F0"
+    },
+    "white": {
+      "value": "#fff"
+    },
+    "black": {
+      "value": "#030303"
+    }
+  }
+}
