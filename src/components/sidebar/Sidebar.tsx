@@ -6,12 +6,12 @@ import BoardNav from "./BoardNav";
 import ThemeControl from "./ThemeControl";
 
 const Aside = styled("aside", {
-  backgroundColor: "$white",
+  backgroundColor: "$bg",
   borderRadius: 8,
   width: 264,
   "@tablet": {
     borderRadius: 0,
-    borderRight: "1px solid $linesLight",
+    borderRight: "1px solid $lines",
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-between",

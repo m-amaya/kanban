@@ -9,7 +9,7 @@ import { useMediaQuery } from "~/utils";
 
 const Section = styled("section", {
   alignItems: "center",
-  borderBottom: "1px solid $linesLight",
+  borderBottom: "1px solid $lines",
   display: "flex",
   flex: 1,
   justifyContent: "space-between",
@@ -42,7 +42,7 @@ const BoardButton = styled("button", {
   alignItems: "center",
   backgroundColor: "transparent",
   border: "none",
-  color: "$black",
+  color: "$text",
   cursor: "pointer",
   display: "inline-grid",
   gap: 8,

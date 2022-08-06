@@ -6,7 +6,7 @@ import HeaderContent from "./HeaderContent";
 import Logo from "./Logo";
 
 const HeaderStyled = styled("header", {
-  backgroundColor: "$white",
+  backgroundColor: "$bg",
   display: "flex",
   height: tokens.content.headerHeightMobile,
   left: 0,

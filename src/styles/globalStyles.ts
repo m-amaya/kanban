@@ -5,6 +5,11 @@ const globalStyles = globalCss({
     "url('https://unpkg.com/modern-css-reset/dist/reset.min.css')",
     "url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700&display=swap')",
   ],
+  "#root > div": {
+    backgroundColor: "$pageBg",
+    color: "$text",
+    fontFamily: "$jakarta",
+  },
   "*": {
     boxSizing: "border-box",
     noSpace: true,

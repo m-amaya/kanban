@@ -1,7 +1,7 @@
 import { FC } from "react";
 
 import { ThemeToggle } from "~/components/form";
-import { styled } from "~/styles";
+import { darkTheme, styled } from "~/styles";
 import { ICONS } from "~/tokens";
 import { useMediaQuery } from "~/utils";
 
@@ -25,6 +25,9 @@ const Panel = styled("div", {
   display: "flex",
   height: 48,
   justifyContent: "center",
+  [`.${darkTheme} &`]: {
+    backgroundColor: "$veryDarkGrey",
+  },
 });
 
 const HideButton = styled("button", {

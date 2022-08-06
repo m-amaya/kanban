@@ -1,6 +1,8 @@
 import { FC } from "react";
 
 import logoDarkUrl from "~/assets/logo-dark.svg";
+import logoLightUrl from "~/assets/logo-light.svg";
+import { useThemeStore } from "~/store";
 import { styled } from "~/styles";
 import { tokens } from "~/tokens";
 import { useMediaQuery } from "~/utils";
@@ -9,7 +11,7 @@ const LogoStyled = styled("div", {
   alignItems: "center",
   display: "flex",
   "@tablet": {
-    borderRight: "1px solid $linesLight",
+    borderRight: "1px solid $lines",
     paddingLeft: 26,
     width: tokens.content.sidebarWidthTablet,
   },
@@ -21,6 +23,7 @@ const LogoStyled = styled("div", {
 
 const Logo: FC = () => {
   const { isMobile } = useMediaQuery();
+  const { isDarkTheme } = useThemeStore();
 
   if (isMobile) {
     return null;
@@ -28,7 +31,7 @@ const Logo: FC = () => {
 
   return (
     <LogoStyled>
-      <img src={logoDarkUrl} />
+      <img src={isDarkTheme ? logoLightUrl : logoDarkUrl} />
     </LogoStyled>
   );
 };

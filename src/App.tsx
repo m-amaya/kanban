@@ -1,5 +1,6 @@
 import { FC, useEffect } from "react";
 
+import ApplyTheme from "~/components/ApplyTheme";
 import Content from "~/components/Content";
 import { Header } from "~/components/header";
 import { Modal } from "~/components/modals";
@@ -15,9 +16,11 @@ const App: FC = () => {
     <ModalProvider>
       <SidebarProvider>
         <ThemeProvider>
-          <Header />
-          <Content />
-          <Modal />
+          <ApplyTheme>
+            <Header />
+            <Content />
+            <Modal />
+          </ApplyTheme>
         </ThemeProvider>
       </SidebarProvider>
     </ModalProvider>

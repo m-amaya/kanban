@@ -1,5 +1,6 @@
-import { FC, useState } from "react";
+import { FC } from "react";
 
+import { useThemeStore } from "~/store";
 import { styled } from "~/styles";
 import { ICONS } from "~/tokens";
 
@@ -44,12 +45,12 @@ const LightIcon = styled(ICONS.lightTheme, {});
 const DarkIcon = styled(ICONS.darkTheme, {});
 
 const ThemeToggle: FC = () => {
-  const [isDark, setDark] = useState(false);
+  const { isDarkTheme, toggleTheme } = useThemeStore();
 
   return (
     <Container>
       <LightIcon />
-      <Toggle isRight={isDark} onClick={() => setDark(!isDark)}>
+      <Toggle isRight={isDarkTheme} onClick={() => toggleTheme()}>
         <ToggleIndicator />
       </Toggle>
       <DarkIcon />

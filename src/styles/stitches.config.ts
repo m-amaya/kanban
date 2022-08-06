@@ -24,6 +24,13 @@ const {
   zIndex,
 } = tokens;
 
+const lightTheme = {
+  pageBg: palette.lightGrey,
+  bg: palette.white,
+  text: palette.black,
+  lines: palette.linesLight,
+};
+
 export const {
   styled,
   css,
@@ -35,7 +42,7 @@ export const {
   config,
 } = createStitches({
   theme: {
-    colors: palette,
+    colors: { ...palette, ...lightTheme },
     fonts,
     fontSizes: replace(fontSizes, "%px"),
     fontWeights,
@@ -46,7 +53,7 @@ export const {
   utils: {
     // typography
     textStyle: (type: FontStyleType) => ({
-      color: type.search(/h/i) > -1 ? "$black" : "$mediumBrown",
+      color: "$text",
       fontFamily: "$jakarta",
       fontSize: `$${type}`,
       fontWeight: type.search(/h/i) > -1 ? "$bold" : "$medium",
@@ -68,5 +75,14 @@ export const {
       transitionDuration: "200ms",
       transitionProperty: properties.join(", "),
     }),
+  },
+});
+
+export const darkTheme = createTheme({
+  colors: {
+    pageBg: palette.veryDarkGrey,
+    bg: palette.darkGrey,
+    text: palette.white,
+    lines: palette.linesDark,
   },
 });
