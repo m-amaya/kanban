@@ -2,12 +2,14 @@ import { FC } from "react";
 
 import mobileLogoUrl from "~/assets/logo-mobile.svg";
 import { Button } from "~/components/form";
+import { useModalStore } from "~/store";
 import { styled } from "~/styles";
 import { ICONS } from "~/tokens";
 import { useMediaQuery } from "~/utils";
 
 const Section = styled("section", {
   alignItems: "center",
+  borderBottom: "1px solid $linesLight",
   display: "flex",
   flex: 1,
   justifyContent: "space-between",
@@ -82,6 +84,7 @@ const MoreIcon = styled(ICONS.verticalEllipsis, {
 
 const HeaderContent: FC = () => {
   const { isMobile, isGteTablet } = useMediaQuery();
+  const { toggleModal } = useModalStore();
 
   return (
     <Section>
@@ -89,7 +92,7 @@ const HeaderContent: FC = () => {
         {isMobile ? (
           <>
             <img src={mobileLogoUrl} />
-            <BoardButton>
+            <BoardButton onClick={() => toggleModal("boards")}>
               Platform Launch <ChevronIcon />
             </BoardButton>
           </>

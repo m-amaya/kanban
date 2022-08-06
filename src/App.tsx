@@ -2,6 +2,8 @@ import { FC, useEffect } from "react";
 
 import Content from "~/components/Content";
 import { Header } from "~/components/header";
+import { Modal } from "~/components/modals";
+import { ModalProvider } from "~/store";
 import { globalStyles } from "~/styles";
 
 const App: FC = () => {
@@ -10,10 +12,11 @@ const App: FC = () => {
   }, []);
 
   return (
-    <div>
+    <ModalProvider>
       <Header />
       <Content />
-    </div>
+      <Modal />
+    </ModalProvider>
   );
 };
 
