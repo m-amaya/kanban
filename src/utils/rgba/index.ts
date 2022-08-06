@@ -1,6 +1,10 @@
 import hexRgb from "hex-rgb";
 
-const rgba = (hex: string, alpha: number) =>
-  hexRgb(hex, { alpha, format: "css" });
+import { tokens } from "~/tokens";
+
+const { palette } = tokens;
+
+const rgba = (color: keyof typeof palette, alpha: number) =>
+  hexRgb(palette[color], { alpha, format: "css" });
 
 export default rgba;

@@ -1,0 +1,19 @@
+{
+  "content": {
+    "headerHeightMobile": {
+      "value": 64
+    },
+    "headerHeightTablet": {
+      "value": 80
+    },
+    "headerHeightDesktop": {
+      "value": 100
+    },
+    "sidebarWidthTablet": {
+      "value": 260
+    },
+    "sidebarWidthDesktop": {
+      "value": 300
+    }
+  }
+}

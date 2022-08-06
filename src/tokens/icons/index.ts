@@ -1,27 +1,27 @@
-import addTaskUrl from "./svg/icon-add-task-mobile.svg";
-import boardUrl from "./svg/icon-board.svg";
-import checkUrl from "./svg/icon-check.svg";
-import chevronDownUrl from "./svg/icon-chevron-down.svg";
-import chevronUpUrl from "./svg/icon-chevron-up.svg";
-import crossUrl from "./svg/icon-cross.svg";
-import darkThemeUrl from "./svg/icon-dark-theme.svg";
-import hideSidebarUrl from "./svg/icon-hide-sidebar.svg";
-import lightThemeUrl from "./svg/icon-light-theme.svg";
-import showSidebarUrl from "./svg/icon-show-sidebar.svg";
-import verticalEllipsisUrl from "./svg/icon-vertical-ellipsis.svg";
+import { ReactComponent as AddTask } from "./svg/icon-add-task-mobile.svg";
+import { ReactComponent as Board } from "./svg/icon-board.svg";
+import { ReactComponent as Check } from "./svg/icon-check.svg";
+import { ReactComponent as ChevronDown } from "./svg/icon-chevron-down.svg";
+import { ReactComponent as ChevronUp } from "./svg/icon-chevron-up.svg";
+import { ReactComponent as Cross } from "./svg/icon-cross.svg";
+import { ReactComponent as DarkTheme } from "./svg/icon-dark-theme.svg";
+import { ReactComponent as HideSidebar } from "./svg/icon-hide-sidebar.svg";
+import { ReactComponent as LightTheme } from "./svg/icon-light-theme.svg";
+import { ReactComponent as ShowSidebar } from "./svg/icon-show-sidebar.svg";
+import { ReactComponent as VerticalEllipsis } from "./svg/icon-vertical-ellipsis.svg";
 
 const ICONS = {
-  addTask: addTaskUrl,
-  board: boardUrl,
-  check: checkUrl,
-  chevronDown: chevronDownUrl,
-  chevronUp: chevronUpUrl,
-  cross: crossUrl,
-  darkTheme: darkThemeUrl,
-  hideSidebar: hideSidebarUrl,
-  lightTheme: lightThemeUrl,
-  showSidebar: showSidebarUrl,
-  verticalEllipsis: verticalEllipsisUrl,
+  addTask: AddTask,
+  board: Board,
+  check: Check,
+  chevronDown: ChevronDown,
+  chevronUp: ChevronUp,
+  cross: Cross,
+  darkTheme: DarkTheme,
+  hideSidebar: HideSidebar,
+  lightTheme: LightTheme,
+  showSidebar: ShowSidebar,
+  verticalEllipsis: VerticalEllipsis,
 };
 
 export default ICONS;

@@ -1,13 +1,5 @@
 import { createStitches } from "@stitches/react";
-import {
-  breakpoints,
-  fonts,
-  fontSizes,
-  fontWeights,
-  lineHeights,
-  palette,
-  zIndex,
-} from "~/tokens/tokens.json";
+import { tokens } from "~/tokens";
 import type { FontStyleType } from "~/types";
 import rgba from "~/utils/rgba";
 
@@ -21,6 +13,16 @@ function replace<T>(vars: T, template: string) {
 
   return tokens;
 }
+
+const {
+  breakpoints,
+  fonts,
+  fontSizes,
+  fontWeights,
+  lineHeights,
+  palette,
+  zIndex,
+} = tokens;
 
 export const {
   styled,
@@ -52,7 +54,7 @@ export const {
     }),
     // states
     focusRing: (color: keyof typeof palette) => ({
-      outlineColor: rgba(palette[color], 0.35),
+      outlineColor: rgba(color, 0.35),
       outlineStyle: "solid",
       outlineWidth: 3,
     }),

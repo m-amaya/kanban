@@ -8,6 +8,9 @@
     },
     "dialog": {
       "value": 3
+    },
+    "menu": {
+      "value": 4
     }
   }
 }
