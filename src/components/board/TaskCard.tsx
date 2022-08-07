@@ -36,7 +36,12 @@ const TaskCard: FC<{ data: Task; index: number }> = ({ data, index }) => {
   return (
     <Draggable draggableId={id} index={index}>
       {({ innerRef, draggableProps, dragHandleProps }) => (
-        <Card ref={innerRef} {...draggableProps} {...dragHandleProps}>
+        <Card
+          ref={innerRef}
+          {...draggableProps}
+          {...dragHandleProps}
+          onClick={() => console.log("clicked")}
+        >
           <Title>{data.title}</Title>
           <Description>
             {numSubtasksCompleted} of {numSubtasks} subtasks

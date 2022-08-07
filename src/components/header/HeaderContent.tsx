@@ -1,7 +1,7 @@
 import { FC } from "react";
 
 import mobileLogoUrl from "~/assets/logo-mobile.svg";
-import { Button } from "~/components/form";
+import { Button, MoreOptions, MoreItem } from "~/components/form";
 import { useBoardStore, useModalStore } from "~/store";
 import { styled } from "~/styles";
 import { ICONS } from "~/tokens";
@@ -55,31 +55,16 @@ const ChevronIcon = styled(ICONS.chevronDown, {
 });
 
 const Actions = styled("div", {
-  display: "flex",
+  alignItems: "center",
+  display: "inline-grid",
+  gap: 16,
+  gridAutoFlow: "column",
 });
 
 const PlusIcon = styled(ICONS.addTask, {
   color: "$white",
   height: 12,
   width: 12,
-});
-
-const MoreButton = styled("button", {
-  alignItems: "center",
-  backgroundColor: "transparent",
-  border: "none",
-  cursor: "pointer",
-  display: "inline-grid",
-  height: 32,
-  outline: 0,
-  paddingLeft: 16,
-  "@tablet": {
-    height: 48,
-  },
-});
-
-const MoreIcon = styled(ICONS.verticalEllipsis, {
-  color: "$mediumGrey",
 });
 
 const HeaderContent: FC = () => {
@@ -113,9 +98,10 @@ const HeaderContent: FC = () => {
             <PlusIcon />
             {isGteTablet && "Add New Task"}
           </Button>
-          <MoreButton>
-            <MoreIcon />
-          </MoreButton>
+          <MoreOptions>
+            <MoreItem>Edit Board</MoreItem>
+            <MoreItem isDangerous>Delete Board</MoreItem>
+          </MoreOptions>
         </Actions>
       )}
     </Section>
