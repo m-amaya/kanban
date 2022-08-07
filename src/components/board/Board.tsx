@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { DragDropContext } from "react-beautiful-dnd";
+import { useBoardStore } from "~/store";
 
 import { styled } from "~/styles";
 import Column from "./Column";
@@ -15,14 +16,17 @@ const Main = styled("main", {
 });
 
 const Board: FC = () => {
+  const { board } = useBoardStore();
   const onDragEnd = () => null;
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
       <Main>
-        <Column />
-        <Column />
-        <Column />
+        {board && board.columns && board.columns.length ? (
+          board.columns.map((column, idx) => <Column key={idx} data={column} />)
+        ) : (
+          <div>Empty</div>
+        )}
       </Main>
     </DragDropContext>
   );

@@ -3,7 +3,7 @@ import { FC } from "react";
 import { ThemeToggle } from "~/components/form";
 import { darkTheme, styled } from "~/styles";
 import { ICONS } from "~/tokens";
-import { useMediaQuery } from "~/utils";
+import { rgba, useMediaQuery } from "~/utils";
 
 const Container = styled("div", {
   display: "grid",
@@ -38,6 +38,11 @@ const HideButton = styled("button", {
   cursor: "pointer",
   height: 48,
   outline: 0,
+  smoothTransition: ["background-color", "color"],
+  "&:hover": {
+    backgroundColor: rgba("mainPurple", 0.1),
+    color: "$mainPurple",
+  },
 });
 
 const HideButtonContent = styled("div", {

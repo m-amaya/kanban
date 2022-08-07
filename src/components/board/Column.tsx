@@ -41,17 +41,17 @@ const TaskGrid = styled("div", {
   gap: 20,
 });
 
-const Column: FC = () => {
+const Column: FC<{ data: Column }> = ({ data }) => {
   return (
     <Track>
       <Title>
-        <StatusDot /> Todo (4)
+        <StatusDot /> {data.name} ({data.tasks.length})
       </Title>
       <TaskContainer>
         <TaskGrid>
-          <TaskCard>Task #1</TaskCard>
-          <TaskCard>Task #2</TaskCard>
-          <TaskCard>Task #3</TaskCard>
+          {data.tasks.map((task, idx) => (
+            <TaskCard key={idx} data={task} />
+          ))}
         </TaskGrid>
       </TaskContainer>
     </Track>

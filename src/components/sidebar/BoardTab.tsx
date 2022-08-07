@@ -1,7 +1,13 @@
-import { FC, PropsWithChildren } from "react";
+import {
+  FC,
+  HTMLAttributes,
+  MouseEventHandler,
+  PropsWithChildren,
+} from "react";
 
 import { styled } from "~/styles";
 import { ICONS } from "~/tokens";
+import { rgba } from "~/utils";
 
 const Tab = styled("button", {
   alignItems: "center",
@@ -21,8 +27,8 @@ const Tab = styled("button", {
   width: "100%",
   smoothTransition: ["background-color", "color"],
   "&:hover": {
-    backgroundColor: "$mainPurpleHover",
-    color: "$white",
+    backgroundColor: rgba("mainPurple", 0.1),
+    color: "$mainPurple",
   },
   variants: {
     isActive: {
@@ -31,16 +37,13 @@ const Tab = styled("button", {
         color: "$white",
         "&:hover": {
           backgroundColor: "$mainPurple",
+          color: "$white",
         },
       },
     },
     isCreateNew: {
       true: {
         color: "$mainPurple",
-        "&:hover": {
-          backgroundColor: "inherit",
-          color: "$mainPurple",
-        },
       },
     },
   },
@@ -59,14 +62,14 @@ const Label = styled("span", {
   gridAutoFlow: "column",
 });
 
-interface Props extends PropsWithChildren {
+interface Props extends HTMLAttributes<HTMLButtonElement> {
   isActive?: boolean;
   isCreateNew?: boolean;
 }
 
-const BoardTab: FC<Props> = ({ isActive, isCreateNew, children }) => {
+const BoardTab: FC<Props> = ({ isActive, isCreateNew, children, ...attrs }) => {
   return (
-    <Tab isActive={isActive} isCreateNew={isCreateNew}>
+    <Tab {...attrs} isActive={isActive} isCreateNew={isCreateNew}>
       <BoardIcon />
       <Label>
         {isCreateNew ? (

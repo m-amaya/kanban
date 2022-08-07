@@ -2,7 +2,7 @@ import { FC } from "react";
 
 import mobileLogoUrl from "~/assets/logo-mobile.svg";
 import { Button } from "~/components/form";
-import { useModalStore } from "~/store";
+import { useBoardStore, useModalStore } from "~/store";
 import { styled } from "~/styles";
 import { ICONS } from "~/tokens";
 import { useMediaQuery } from "~/utils";
@@ -84,6 +84,7 @@ const MoreIcon = styled(ICONS.verticalEllipsis, {
 
 const HeaderContent: FC = () => {
   const { isMobile, isGteTablet } = useMediaQuery();
+  const { board } = useBoardStore();
   const { toggleModal } = useModalStore();
 
   return (
@@ -93,22 +94,30 @@ const HeaderContent: FC = () => {
           <>
             <img src={mobileLogoUrl} />
             <BoardButton onClick={() => toggleModal("boards")}>
-              Platform Launch <ChevronIcon />
+              {board ? (
+                <>
+                  {board.name} <ChevronIcon />
+                </>
+              ) : (
+                "Create New Board"
+              )}
             </BoardButton>
           </>
         ) : (
-          <Title>Platform Launch</Title>
+          <Title>{board ? board.name : "Create New Board"}</Title>
         )}
       </Logo>
-      <Actions>
-        <Button kind='primary' isIcon={isMobile}>
-          <PlusIcon />
-          {isGteTablet && "Add New Task"}
-        </Button>
-        <MoreButton>
-          <MoreIcon />
-        </MoreButton>
-      </Actions>
+      {board && (
+        <Actions>
+          <Button kind='primary' isIcon={isMobile}>
+            <PlusIcon />
+            {isGteTablet && "Add New Task"}
+          </Button>
+          <MoreButton>
+            <MoreIcon />
+          </MoreButton>
+        </Actions>
+      )}
     </Section>
   );
 };

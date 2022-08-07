@@ -1,4 +1,5 @@
 import { FC } from "react";
+import { useBoardStore } from "~/store";
 
 import { styled } from "~/styles";
 import BoardTab from "./BoardTab";
@@ -24,13 +25,21 @@ const Title = styled("div", {
 });
 
 const BoardNav: FC = () => {
+  const { board: currentBoard, boardList, selectBoard } = useBoardStore();
+
   return (
     <Nav>
       <Title>All Boards (3)</Title>
       <div>
-        <BoardTab isActive>Platform Launch</BoardTab>
-        <BoardTab>Marketing Plan</BoardTab>
-        <BoardTab>Roadmap</BoardTab>
+        {boardList.map((board) => (
+          <BoardTab
+            key={board._id}
+            isActive={board._id === currentBoard?._id}
+            onClick={() => selectBoard(board._id)}
+          >
+            {board.name}
+          </BoardTab>
+        ))}
         <BoardTab isCreateNew />
       </div>
     </Nav>
