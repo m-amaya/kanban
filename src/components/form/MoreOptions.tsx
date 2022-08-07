@@ -40,15 +40,14 @@ const Menu = styled("ul", {
 const MoreOptions: FC<PropsWithChildren> = ({ children }) => {
   const ref = useRef(null);
   const [isOpen, setOpen] = useState(false);
-  const toggleOpen = () => setOpen(!isOpen);
 
   useClickOutside(ref, {
-    onClick: () => toggleOpen(),
+    onClick: () => setOpen(false),
   });
 
   return (
     <Wrapper ref={ref}>
-      <Button onClick={() => toggleOpen()}>
+      <Button onClick={() => setOpen(!isOpen)}>
         <MoreIcon />
       </Button>
       {isOpen && <Menu>{children}</Menu>}

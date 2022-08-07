@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { Draggable } from "react-beautiful-dnd";
 
+import { useModalStore } from "~/store";
 import { styled } from "~/styles";
 import { useUniqueId } from "~/utils";
 
@@ -27,6 +28,7 @@ const Description = styled("div", {
 });
 
 const TaskCard: FC<{ data: Task; index: number }> = ({ data, index }) => {
+  const { toggleModal } = useModalStore();
   const numSubtasks = data.subtasks.length;
   const numSubtasksCompleted = data.subtasks.filter(
     (subtasks) => subtasks.isCompleted,
@@ -40,7 +42,7 @@ const TaskCard: FC<{ data: Task; index: number }> = ({ data, index }) => {
           ref={innerRef}
           {...draggableProps}
           {...dragHandleProps}
-          onClick={() => console.log("clicked")}
+          onClick={() => toggleModal("viewTask")}
         >
           <Title>{data.title}</Title>
           <Description>

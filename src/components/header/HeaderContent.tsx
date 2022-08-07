@@ -78,7 +78,7 @@ const HeaderContent: FC = () => {
         {isMobile ? (
           <>
             <img src={mobileLogoUrl} />
-            <BoardButton onClick={() => toggleModal("boards")}>
+            <BoardButton onClick={() => toggleModal("viewBoards")}>
               {board ? (
                 <>
                   {board.name} <ChevronIcon />
@@ -94,13 +94,21 @@ const HeaderContent: FC = () => {
       </Logo>
       {board && (
         <Actions>
-          <Button kind='primary' isIcon={isMobile}>
+          <Button
+            kind='primary'
+            isIcon={isMobile}
+            onClick={() => toggleModal("addTask")}
+          >
             <PlusIcon />
             {isGteTablet && "Add New Task"}
           </Button>
           <MoreOptions>
-            <MoreItem>Edit Board</MoreItem>
-            <MoreItem isDangerous>Delete Board</MoreItem>
+            <MoreItem onClick={() => toggleModal("editBoard")}>
+              Edit Board
+            </MoreItem>
+            <MoreItem isDangerous onClick={() => toggleModal("deleteBoard")}>
+              Delete Board
+            </MoreItem>
           </MoreOptions>
         </Actions>
       )}

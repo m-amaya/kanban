@@ -7,6 +7,14 @@ import { styled } from "~/styles";
 import { tokens } from "~/tokens";
 import { rgba, useMediaQuery } from "~/utils";
 
+import AddBoardModal from "./AddBoardModal";
+import AddTaskModal from "./AddTaskModal";
+import DeleteBoardModal from "./DeleteBoardModal";
+import DeleteTaskModal from "./DeleteTaskModal";
+import EditBoardModal from "./EditBoardModal";
+import EditTaskModal from "./EditTaskModal";
+import ViewTaskModal from "./ViewTaskModal";
+
 const { headerHeightMobile } = tokens.content;
 
 const Overlay = styled("div", {
@@ -43,26 +51,33 @@ const Content = styled("div", {
 });
 
 const dialog: Record<ModalType, JSX.Element> = {
-  boards: <Sidebar />,
+  viewBoards: <Sidebar />,
+  addBoard: <AddBoardModal />,
+  editBoard: <EditBoardModal />,
+  deleteBoard: <DeleteBoardModal />,
+  viewTask: <ViewTaskModal />,
+  addTask: <AddTaskModal />,
+  editTask: <EditTaskModal />,
+  deleteTask: <DeleteTaskModal />,
 };
 
 const Modal: FC = () => {
   const { isGteTablet } = useMediaQuery();
   const { currentModal, modalIsOpen, closeModal } = useModalStore();
-  const isBoardModal = currentModal === "boards";
+  const isBoardsModal = currentModal === "viewBoards";
 
   if (!modalIsOpen || !currentModal) {
     return null;
   }
 
-  if (isBoardModal && isGteTablet) {
+  if (isBoardsModal && isGteTablet) {
     closeModal();
   }
 
   return (
     <>
-      <Overlay showHeader={isBoardModal} onClick={() => closeModal()} />
-      <Content belowHeader={isBoardModal}>{dialog[currentModal]}</Content>
+      <Overlay showHeader={isBoardsModal} onClick={() => closeModal()} />
+      <Content belowHeader={isBoardsModal}>{dialog[currentModal]}</Content>
     </>
   );
 };

@@ -5,6 +5,7 @@ import { useBoardStore } from "~/store";
 import { styled } from "~/styles";
 import { parseNumber } from "~/utils";
 import Column from "./Column";
+import NewColumn from "./NewColumn";
 
 const Main = styled("main", {
   display: "grid",
@@ -38,9 +39,12 @@ const Board: FC = () => {
     <DragDropContext onDragEnd={onDragEnd}>
       <Main>
         {board && board.columns && board.columns.length ? (
-          board.columns.map((column, idx) => (
-            <Column key={idx} data={column} index={idx} />
-          ))
+          <>
+            {board.columns.map((column, idx) => (
+              <Column key={idx} data={column} index={idx} />
+            ))}
+            <NewColumn />
+          </>
         ) : (
           <div>Empty</div>
         )}

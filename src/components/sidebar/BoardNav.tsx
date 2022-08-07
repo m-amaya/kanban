@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { useBoardStore } from "~/store";
+import { useBoardStore, useModalStore } from "~/store";
 
 import { styled } from "~/styles";
 import BoardTab from "./BoardTab";
@@ -26,6 +26,7 @@ const Title = styled("div", {
 
 const BoardNav: FC = () => {
   const { board: currentBoard, boardList, selectBoard } = useBoardStore();
+  const { toggleModal } = useModalStore();
 
   return (
     <Nav>
@@ -40,7 +41,7 @@ const BoardNav: FC = () => {
             {board.name}
           </BoardTab>
         ))}
-        <BoardTab isCreateNew />
+        <BoardTab isCreateNew onClick={() => toggleModal("addBoard")} />
       </div>
     </Nav>
   );

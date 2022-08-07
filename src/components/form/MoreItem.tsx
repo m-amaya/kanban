@@ -1,5 +1,4 @@
 import { darkTheme, styled } from "~/styles";
-import { rgba } from "~/utils";
 
 const MoreItem = styled("li", {
   textStyle: "bodyLg",

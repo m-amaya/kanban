@@ -6,7 +6,15 @@ import {
   useState,
 } from "react";
 
-export type ModalType = "boards";
+export type ModalType =
+  | "viewBoards"
+  | "addBoard"
+  | "editBoard"
+  | "deleteBoard"
+  | "viewTask"
+  | "addTask"
+  | "editTask"
+  | "deleteTask";
 
 interface ModalStore {
   modalIsOpen: boolean;
