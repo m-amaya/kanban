@@ -33,27 +33,24 @@ const StatusDot = styled("div", {
 
 const TaskContainer = styled("div", {
   flex: 1,
-  overflowY: "auto",
 });
 
-const TaskGrid = styled("div", {
-  display: "grid",
-  gap: 20,
-});
-
-const Column: FC<{ data: Column }> = ({ data }) => {
+const Column: FC<{ data: Column; index: number }> = ({ data, index }) => {
   return (
     <Track>
       <Title>
         <StatusDot /> {data.name} ({data.tasks.length})
       </Title>
-      <TaskContainer>
-        <TaskGrid>
-          {data.tasks.map((task, idx) => (
-            <TaskCard key={idx} data={task} />
-          ))}
-        </TaskGrid>
-      </TaskContainer>
+      <Droppable droppableId={`col-${index}`}>
+        {({ droppableProps, innerRef, placeholder }) => (
+          <TaskContainer {...droppableProps} ref={innerRef}>
+            {data.tasks.map((task, idx) => (
+              <TaskCard key={idx} data={task} index={idx} />
+            ))}
+            {placeholder}
+          </TaskContainer>
+        )}
+      </Droppable>
     </Track>
   );
 };

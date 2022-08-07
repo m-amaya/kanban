@@ -34,6 +34,7 @@ const HideButton = styled("button", {
   textStyle: "headMd",
   backgroundColor: "transparent",
   border: "none",
+  borderRadius: 6,
   color: "$mediumGrey",
   cursor: "pointer",
   height: 48,
