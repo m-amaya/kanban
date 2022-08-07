@@ -38,19 +38,19 @@ const Menu = styled("ul", {
 });
 
 const MoreOptions: FC<PropsWithChildren> = ({ children }) => {
-  const ref = useRef(null);
+  const menuRef = useRef(null);
   const [isOpen, setOpen] = useState(false);
 
-  useClickOutside(ref, {
+  useClickOutside(menuRef, {
     onClick: () => setOpen(false),
   });
 
   return (
-    <Wrapper ref={ref}>
+    <Wrapper>
       <Button onClick={() => setOpen(!isOpen)}>
         <MoreIcon />
       </Button>
-      {isOpen && <Menu>{children}</Menu>}
+      {isOpen && <Menu ref={menuRef}>{children}</Menu>}
     </Wrapper>
   );
 };

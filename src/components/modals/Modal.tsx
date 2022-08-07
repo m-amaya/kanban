@@ -39,7 +39,7 @@ const Content = styled("div", {
   left: "50%",
   position: "absolute",
   top: "50%",
-  transform: "translate(-50%)",
+  transform: "translate(-50%, -60%)",
   zIndex: "$dialog",
   variants: {
     belowHeader: {

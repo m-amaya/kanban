@@ -1,4 +1,4 @@
-import { darkTheme, styled } from "~/styles";
+import { styled } from "~/styles";
 
 const MoreItem = styled("li", {
   textStyle: "bodyLg",
@@ -9,10 +9,7 @@ const MoreItem = styled("li", {
   userSelect: "none",
   smoothTransition: ["background-color"],
   "&:hover": {
-    backgroundColor: "$lightGrey",
-  },
-  [`.${darkTheme} &:hover`]: {
-    backgroundColor: "$veryDarkGrey",
+    backgroundColor: "$pageBg",
   },
   variants: {
     isDangerous: {

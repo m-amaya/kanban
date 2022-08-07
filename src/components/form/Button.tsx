@@ -10,6 +10,7 @@ const Button = styled("button", {
   gridAutoFlow: "column",
   outline: 0,
   textStyle: "headMd",
+  smoothTransition: ["background-color", "color"],
   "@tablet": {
     gap: 6,
     height: 48,
@@ -22,9 +23,30 @@ const Button = styled("button", {
       primary: {
         backgroundColor: "$mainPurple",
         color: "$white",
+        "&:hover": {
+          backgroundColor: "$mainPurpleHover",
+        },
       },
-      secondary: {},
-      danger: {},
+      secondary: {
+        backgroundColor: "rgba(99, 95, 199, 0.1)",
+        color: "$mainPurple",
+        "&:hover": {
+          backgroundColor: "rgba(99, 95, 199, 0.25)",
+        },
+      },
+      danger: {
+        backgroundColor: "$red",
+        color: "$white",
+        "&:hover": {
+          backgroundColor: "$redHover",
+        },
+      },
+    },
+    isSmall: {
+      true: {
+        borderRadius: 20,
+        height: 40,
+      },
     },
     isIcon: {
       true: {
