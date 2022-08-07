@@ -8,7 +8,7 @@ import {
   useState,
 } from "react";
 
-import setupDb, { Board, db } from "~/utils/setupDb";
+import setupDb, { Board, db, getList } from "~/utils/setupDb";
 
 type BoardList = Pick<Board, "_id" | "name">[];
 
@@ -16,6 +16,7 @@ interface BoardStore {
   board?: Board;
   boardList: BoardList;
   selectBoard: (_id: string) => void;
+  addBoard: (newBoard: Board) => void;
   moveTask: (
     startCol: number,
     endCol: number,
@@ -48,6 +49,12 @@ export const BoardProvider: FC<PropsWithChildren> = (props) => {
     db.get(_id)
       .then((board) => setBoard(board))
       .catch((error) => console.error(error));
+  };
+
+  const addBoard = (newBoard: Board) => {
+    db.put(newBoard, { force: true })
+      .then(() => getList())
+      .then((boards: BoardList) => setList(boards));
   };
 
   const moveTask = (
@@ -102,7 +109,13 @@ export const BoardProvider: FC<PropsWithChildren> = (props) => {
 
   return (
     <BoardContext.Provider
-      value={{ board, boardList, selectBoard, moveTask }}
+      value={{
+        board,
+        boardList,
+        selectBoard,
+        addBoard,
+        moveTask,
+      }}
       {...props}
     />
   );

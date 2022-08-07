@@ -31,4 +31,10 @@ declare global {
     name: string;
     tasks: Task[];
   }
+
+  interface Board {
+    _id: string;
+    name: string;
+    columns: Column[];
+  }
 }

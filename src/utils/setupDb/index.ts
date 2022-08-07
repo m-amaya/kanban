@@ -5,6 +5,18 @@ export type Board = typeof data.boards[number];
 
 export const db = new PouchDB<Board>("boards");
 
+export const getList = () =>
+  db
+    .find({
+      selector: { name: { $exists: true } },
+      fields: ["_id", "name"],
+      sort: ["name"],
+    })
+    .then((result) => {
+      return result.docs;
+    })
+    .catch((error) => error);
+
 const setupDb = () => {
   const init = () =>
     db.createIndex({ index: { fields: ["name"] } }).then(() =>
@@ -18,18 +30,6 @@ const setupDb = () => {
           .catch((error) => error),
       ),
     );
-
-  const getList = () =>
-    db
-      .find({
-        selector: { name: { $exists: true } },
-        fields: ["_id", "name"],
-        sort: ["name"],
-      })
-      .then((result) => {
-        return result.docs;
-      })
-      .catch((error) => error);
 
   return db
     .info()

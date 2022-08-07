@@ -7,6 +7,7 @@ import { Modal } from "~/components/modals";
 import {
   BoardProvider,
   ModalProvider,
+  NewBoardProvider,
   SidebarProvider,
   ThemeProvider,
 } from "~/store";
@@ -20,15 +21,17 @@ const App: FC = () => {
   return (
     <BoardProvider>
       <ModalProvider>
-        <SidebarProvider>
-          <ThemeProvider>
-            <ApplyTheme>
-              <Header />
-              <Content />
-              <Modal />
-            </ApplyTheme>
-          </ThemeProvider>
-        </SidebarProvider>
+        <NewBoardProvider>
+          <SidebarProvider>
+            <ThemeProvider>
+              <ApplyTheme>
+                <Header />
+                <Content />
+                <Modal />
+              </ApplyTheme>
+            </ThemeProvider>
+          </SidebarProvider>
+        </NewBoardProvider>
       </ModalProvider>
     </BoardProvider>
   );
