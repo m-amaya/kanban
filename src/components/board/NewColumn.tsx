@@ -2,6 +2,7 @@ import { FC } from "react";
 import { useModalStore } from "~/store";
 
 import { darkTheme, styled } from "~/styles";
+import { ICONS } from "~/tokens";
 
 const Column = styled("div", {
   display: "flex",
@@ -29,7 +30,14 @@ const Track = styled("div", {
   },
 });
 
-const Text = styled("div", {});
+const Text = styled("div", {
+  alignItems: "center",
+  display: "inline-grid",
+  gap: 6,
+  gridAutoFlow: "column",
+});
+
+const PlusIcon = styled(ICONS.addTask, {});
 
 const NewColumn: FC = () => {
   const { toggleModal } = useModalStore();
@@ -37,7 +45,9 @@ const NewColumn: FC = () => {
   return (
     <Column>
       <Track onClick={() => toggleModal("editBoard")}>
-        <Text>+ Add Column</Text>
+        <Text>
+          <PlusIcon /> Add Column
+        </Text>
       </Track>
     </Column>
   );

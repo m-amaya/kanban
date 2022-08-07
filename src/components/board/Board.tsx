@@ -4,6 +4,7 @@ import { useBoardStore } from "~/store";
 
 import { styled } from "~/styles";
 import { parseNumber } from "~/utils";
+import Empty from "./Empty";
 import Column from "./Column";
 import NewColumn from "./NewColumn";
 
@@ -35,22 +36,22 @@ const Board: FC = () => {
     );
   };
 
-  return (
-    <DragDropContext onDragEnd={onDragEnd}>
-      <Main>
-        {board && board.columns && board.columns.length ? (
+  if (board && board.columns && board.columns.length) {
+    return (
+      <DragDropContext onDragEnd={onDragEnd}>
+        <Main>
           <>
             {board.columns.map((column, idx) => (
               <Column key={idx} data={column} index={idx} />
             ))}
             <NewColumn />
           </>
-        ) : (
-          <div>Empty</div>
-        )}
-      </Main>
-    </DragDropContext>
-  );
+        </Main>
+      </DragDropContext>
+    );
+  }
+
+  return <Empty />;
 };
 
 export default Board;
