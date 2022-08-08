@@ -23,6 +23,7 @@ interface BoardStore {
   addColumn: () => void;
   updateColumn: (name: string, colIdx: number) => void;
   removeColumn: (colIdx: number) => void;
+  addTask: (task: Task) => void;
   moveTask: (
     startCol: number,
     endCol: number,
@@ -115,6 +116,24 @@ export const BoardProvider: FC<PropsWithChildren> = (props) => {
     }
   };
 
+  const addTask = (newTask: Task) => {
+    if (board) {
+      const columns = board.columns;
+
+      columns.map((column, idx) => {
+        if (column.name === newTask.status) {
+          const updatedColumn = {
+            ...column,
+            tasks: [...column.tasks, newTask],
+          };
+          columns[idx] = updatedColumn;
+          setBoard({ ...board, columns });
+          saveBoard();
+        }
+      });
+    }
+  };
+
   const moveTask = (
     startCol: number,
     endCol: number,
@@ -178,6 +197,7 @@ export const BoardProvider: FC<PropsWithChildren> = (props) => {
         addColumn,
         updateColumn,
         removeColumn,
+        addTask,
         moveTask,
       }}
       {...props}

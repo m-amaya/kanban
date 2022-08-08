@@ -7,9 +7,13 @@ import { ICONS } from "~/tokens";
 
 const Container = styled("div", {
   alignItems: "center",
-  flex: 1,
   display: "flex",
+  height: "100%",
   justifyContent: "center",
+  left: 0,
+  position: "absolute",
+  top: 0,
+  width: "100%",
 });
 
 const Content = styled("div", {

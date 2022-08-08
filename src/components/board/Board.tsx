@@ -16,6 +16,7 @@ const Main = styled("main", {
   flex: 1,
   overflowX: "auto",
   padding: 24,
+  position: "relative",
 });
 
 const Board: FC = () => {
@@ -36,22 +37,22 @@ const Board: FC = () => {
     );
   };
 
-  if (board && board.columns && board.columns.length) {
-    return (
-      <DragDropContext onDragEnd={onDragEnd}>
-        <Main>
+  return (
+    <DragDropContext onDragEnd={onDragEnd}>
+      <Main>
+        {board && board.columns && board.columns.length ? (
           <>
             {board.columns.map((column, idx) => (
               <Column key={idx} data={column} index={idx} />
             ))}
             <NewColumn />
           </>
-        </Main>
-      </DragDropContext>
-    );
-  }
-
-  return <Empty />;
+        ) : (
+          <Empty />
+        )}
+      </Main>
+    </DragDropContext>
+  );
 };
 
 export default Board;

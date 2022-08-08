@@ -8,6 +8,7 @@ import {
   BoardProvider,
   ModalProvider,
   NewBoardProvider,
+  NewTaskProvider,
   SidebarProvider,
   ThemeProvider,
 } from "~/store";
@@ -22,15 +23,17 @@ const App: FC = () => {
     <BoardProvider>
       <ModalProvider>
         <NewBoardProvider>
-          <SidebarProvider>
-            <ThemeProvider>
-              <ApplyTheme>
-                <Header />
-                <Content />
-                <Modal />
-              </ApplyTheme>
-            </ThemeProvider>
-          </SidebarProvider>
+          <NewTaskProvider>
+            <SidebarProvider>
+              <ThemeProvider>
+                <ApplyTheme>
+                  <Header />
+                  <Content />
+                  <Modal />
+                </ApplyTheme>
+              </ThemeProvider>
+            </SidebarProvider>
+          </NewTaskProvider>
         </NewBoardProvider>
       </ModalProvider>
     </BoardProvider>

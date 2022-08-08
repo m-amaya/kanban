@@ -70,10 +70,14 @@ const Dropdown: FC<Props> = ({ label, children }) => {
 
   return (
     <Container>
-      <Select isActive={isOpen} onClick={() => setOpen(!isOpen)}>
+      <Select type='button' isActive={isOpen} onClick={() => setOpen(!isOpen)}>
         {label} <ChevronIcon />
       </Select>
-      {isOpen && <Menu ref={menuRef}>{children}</Menu>}
+      {isOpen && (
+        <Menu ref={menuRef} onClick={() => setOpen(false)}>
+          {children}
+        </Menu>
+      )}
     </Container>
   );
 };
