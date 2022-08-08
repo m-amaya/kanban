@@ -16,7 +16,7 @@ interface NewBoardStore {
   resetBoard: () => void;
 }
 
-const INIT_BOARD: Board = {
+const genInitBoard = () => ({
   _id: genKey(),
   name: "",
   columns: [
@@ -24,12 +24,12 @@ const INIT_BOARD: Board = {
     { name: "Doing", tasks: [] },
     { name: "Done", tasks: [] },
   ],
-};
+});
 
 const NewBoardContext = createContext({} as NewBoardStore);
 
 export const NewBoardProvider: FC<PropsWithChildren> = (props) => {
-  const [newBoard, setNewBoard] = useState(INIT_BOARD);
+  const [newBoard, setNewBoard] = useState(genInitBoard());
 
   const updateName = (name: string) => setNewBoard({ ...newBoard, name });
 
@@ -57,7 +57,7 @@ export const NewBoardProvider: FC<PropsWithChildren> = (props) => {
     }
   };
 
-  const resetBoard = () => setNewBoard(INIT_BOARD);
+  const resetBoard = () => setNewBoard(genInitBoard());
 
   return (
     <NewBoardContext.Provider

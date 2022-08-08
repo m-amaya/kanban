@@ -8,7 +8,7 @@ import {
   Label,
   TextInput,
 } from "~/components/form";
-import { useBoardStore, useNewBoardStore } from "~/store";
+import { useBoardStore, useModalStore, useNewBoardStore } from "~/store";
 import { styled } from "~/styles";
 import { ICONS } from "~/tokens";
 import Dialog, { ModalTitle } from "./Dialog";
@@ -17,6 +17,7 @@ const PlusIcon = styled(ICONS.addTask);
 
 const AddBoardModal: FC = () => {
   const { addBoard } = useBoardStore();
+  const { closeModal } = useModalStore();
   const {
     addColumn,
     newBoard,
@@ -27,17 +28,23 @@ const AddBoardModal: FC = () => {
   } = useNewBoardStore();
   const [errorMsg, setErrorMsg] = useState("");
 
+  const reset = () => {
+    resetBoard();
+    closeModal();
+  };
+
   return (
     <Dialog
       onSubmit={(e) => {
         e.preventDefault();
         if (newBoard.name) {
           addBoard(newBoard);
-          resetBoard();
+          reset();
         } else {
           setErrorMsg("Required");
         }
       }}
+      onReset={() => reset()}
     >
       <ModalTitle>Add New Board</ModalTitle>
       <FormSection>
@@ -46,9 +53,9 @@ const AddBoardModal: FC = () => {
           value={newBoard.name}
           placeholder='e.g. Web Design'
           aria-errormessage={errorMsg}
-          onChange={(e) => {
-            updateName(e.currentTarget.value);
-            if (e.currentTarget.value) {
+          onChange={({ currentTarget: { value } }) => {
+            updateName(value);
+            if (value && errorMsg) {
               setErrorMsg("");
             }
           }}
@@ -66,6 +73,7 @@ const AddBoardModal: FC = () => {
             />
           ))}
           <Button
+            type='button'
             kind='secondary'
             css={{ display: "flex", justifyContent: "center" }}
             onClick={() => addColumn()}
@@ -74,9 +82,14 @@ const AddBoardModal: FC = () => {
           </Button>
         </FormGroup>
       </FormSection>
-      <Button type='submit' kind='primary'>
-        Create New Board
-      </Button>
+      <FormSection>
+        <Button type='submit' kind='primary'>
+          Create New Board
+        </Button>
+        <Button type='reset' kind='secondary'>
+          Cancel
+        </Button>
+      </FormSection>
     </Dialog>
   );
 };

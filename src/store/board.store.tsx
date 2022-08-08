@@ -17,6 +17,12 @@ interface BoardStore {
   boardList: BoardList;
   selectBoard: (_id: string) => void;
   addBoard: (newBoard: Board) => void;
+  saveBoard: () => void;
+  deleteBoard: (board: Board) => void;
+  updateName: (name: string) => void;
+  addColumn: () => void;
+  updateColumn: (name: string, colIdx: number) => void;
+  removeColumn: (colIdx: number) => void;
   moveTask: (
     startCol: number,
     endCol: number,
@@ -55,6 +61,58 @@ export const BoardProvider: FC<PropsWithChildren> = (props) => {
     db.put(newBoard, { force: true })
       .then(() => getList())
       .then((boards: BoardList) => setList(boards));
+  };
+
+  const saveBoard = () => {
+    if (board) {
+      db.put(board, { force: true })
+        .then(() => getList())
+        .then((boards: BoardList) => setList(boards));
+    }
+  };
+
+  const deleteBoard = (board: Board) => {
+    db.remove(board as any)
+      .then(() => getList())
+      .then((boards: BoardList) => {
+        setList(boards);
+
+        if (boards.length) {
+          selectBoard(boards[0]._id);
+        }
+      });
+  };
+
+  const updateName = (name: string) => {
+    if (board) {
+      setBoard({ ...board, name });
+    }
+  };
+
+  const addColumn = () => {
+    if (board) {
+      setBoard({
+        ...board,
+        columns: [...board.columns, { name: "", tasks: [] }],
+      });
+    }
+  };
+
+  const updateColumn = (name: string, colIdx: number) => {
+    if (board && board.columns[colIdx]) {
+      const columns = board.columns;
+      const updatedColumn = columns[colIdx];
+      updatedColumn.name = name;
+      columns[colIdx] = updatedColumn;
+      setBoard({ ...board, columns });
+    }
+  };
+  const removeColumn = (colIdx: number) => {
+    if (board && board.columns[colIdx]) {
+      const columns = board.columns;
+      columns.splice(colIdx, 1);
+      setBoard({ ...board, columns });
+    }
   };
 
   const moveTask = (
@@ -114,6 +172,12 @@ export const BoardProvider: FC<PropsWithChildren> = (props) => {
         boardList,
         selectBoard,
         addBoard,
+        saveBoard,
+        deleteBoard,
+        updateName,
+        addColumn,
+        updateColumn,
+        removeColumn,
         moveTask,
       }}
       {...props}

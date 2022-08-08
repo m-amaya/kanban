@@ -34,7 +34,7 @@ const InputItem: FC<Props> = ({ onClose, ...attrs }) => {
   return (
     <Row>
       <TextInput {...attrs} />
-      <CloseButton onClick={onClose}>
+      <CloseButton type='button' onClick={onClose}>
         <CloseIcon />
       </CloseButton>
     </Row>
