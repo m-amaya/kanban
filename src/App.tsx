@@ -10,6 +10,7 @@ import {
   NewBoardProvider,
   NewTaskProvider,
   SidebarProvider,
+  TaskProvider,
   ThemeProvider,
 } from "~/store";
 import { globalStyles } from "~/styles";
@@ -25,13 +26,15 @@ const App: FC = () => {
         <NewBoardProvider>
           <NewTaskProvider>
             <SidebarProvider>
-              <ThemeProvider>
-                <ApplyTheme>
-                  <Header />
-                  <Content />
-                  <Modal />
-                </ApplyTheme>
-              </ThemeProvider>
+              <TaskProvider>
+                <ThemeProvider>
+                  <ApplyTheme>
+                    <Header />
+                    <Content />
+                    <Modal />
+                  </ApplyTheme>
+                </ThemeProvider>
+              </TaskProvider>
             </SidebarProvider>
           </NewTaskProvider>
         </NewBoardProvider>

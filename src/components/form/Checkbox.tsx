@@ -1,7 +1,7 @@
-import { FC, PropsWithChildren } from "react";
+import { FC, MouseEventHandler, PropsWithChildren } from "react";
 import { darkTheme, styled } from "~/styles";
 import { ICONS } from "~/tokens";
-import { rgba } from "~/utils";
+import { rgba, useUniqueId } from "~/utils";
 
 const Label = styled("label", {
   alignItems: "center",
@@ -68,12 +68,20 @@ const CheckIcon = styled(ICONS.check, {
 
 interface Props extends PropsWithChildren {
   isChecked?: boolean;
+  onClick?: MouseEventHandler<HTMLLabelElement>;
 }
 
-const Checkbox: FC<Props> = ({ isChecked, children }) => {
+const Checkbox: FC<Props> = ({ isChecked, onClick, children }) => {
+  const id = useUniqueId();
   return (
-    <Label isChecked={isChecked}>
-      <Input type='checkbox' checked={isChecked} />
+    <Label htmlFor={id} isChecked={isChecked} onMouseDown={onClick}>
+      <Input
+        id={id}
+        type='checkbox'
+        name='checkbox'
+        checked={isChecked}
+        readOnly
+      />
       <Checkmark isChecked={isChecked}>{isChecked && <CheckIcon />}</Checkmark>
       {children}
     </Label>

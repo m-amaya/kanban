@@ -1,7 +1,7 @@
-import { FC } from "react";
+import { FC, useMemo } from "react";
 import { Draggable } from "react-beautiful-dnd";
 
-import { useModalStore } from "~/store";
+import { useModalStore, useTaskStore } from "~/store";
 import { styled } from "~/styles";
 import { useUniqueId } from "~/utils";
 
@@ -29,10 +29,12 @@ const Description = styled("div", {
 
 const TaskCard: FC<{ data: Task; index: number }> = ({ data, index }) => {
   const { toggleModal } = useModalStore();
+  const { viewTask } = useTaskStore();
   const numSubtasks = data.subtasks.length;
-  const numSubtasksCompleted = data.subtasks.filter(
-    (subtasks) => subtasks.isCompleted,
-  ).length;
+  const numSubtasksCompleted = useMemo(
+    () => data.subtasks.filter((subtasks) => subtasks.isCompleted).length,
+    [data.subtasks],
+  );
   const id = useUniqueId("task");
 
   return (
@@ -42,7 +44,10 @@ const TaskCard: FC<{ data: Task; index: number }> = ({ data, index }) => {
           ref={innerRef}
           {...draggableProps}
           {...dragHandleProps}
-          onClick={() => toggleModal("viewTask")}
+          onClick={() => {
+            viewTask(data);
+            toggleModal("viewTask");
+          }}
         >
           <Title>{data.title}</Title>
           <Description>

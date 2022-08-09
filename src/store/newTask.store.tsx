@@ -17,17 +17,17 @@ interface NewTaskStore {
   resetNewTask: () => void;
 }
 
-const INIT_TASK: Task = {
+const genNewTask = () => ({
   title: "",
   description: "",
   status: "",
   subtasks: [{ title: "", isCompleted: false }],
-};
+});
 
 const NewTaskContext = createContext({} as NewTaskStore);
 
 export const NewTaskProvider: FC<PropsWithChildren> = (props) => {
-  const [newTask, setNewTask] = useState(INIT_TASK);
+  const [newTask, setNewTask] = useState(genNewTask());
 
   const updateTitle = (title: string) => setNewTask({ ...newTask, title });
 
@@ -60,7 +60,7 @@ export const NewTaskProvider: FC<PropsWithChildren> = (props) => {
     }
   };
 
-  const resetNewTask = () => setNewTask(INIT_TASK);
+  const resetNewTask = () => setNewTask(genNewTask());
 
   return (
     <NewTaskContext.Provider
